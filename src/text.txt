@@ -1,0 +1,48 @@
+we add footer compo in app.js hence we can see it on all pages
+An e-commerce website is an online platform that facilitate buying  and selling of products or services over
+         the internet serves as a virtual marketplace where business and individual showcase their products, interact with customers
+         and conduct transitions without the need for physical presence. E-commerce website have gained immense popularity due to their
+         convenient accessibility, and the global reach they offer.
+
+const getDefaultCart=()=>{
+    let cart={};
+    for (let index = 0; index < all_product.length+1; index++) {
+        cart[index]=0;
+        
+    }
+    return cart;
+}
+const ShopContextProvider=(props)=>{
+    const [cartItems,setCartItems]=useState(getDefaultCart());
+   
+
+    const addToCart=(itemId)=>{
+        setCartItems((prev)=>({...prev,[itemId]:prev[itemId]+1}))
+        console.log(cartItems);
+        
+    }
+
+    const removeFromCart=(itemId)=>{
+        setCartItems((prev)=>({...prev,[itemId]:prev[itemId]-1}))
+    }
+    const contextValue={all_product,cartItems,addToCart,removeFromCart};
+    
+
+    return (
+        <ShopContext.Provider value={contextValue}>
+            {props.children}
+        </ShopContext.Provider>
+    )
+
+CARTITEMS.JSX
+<div>
+            <div className="cartitems-format">
+                <img src="" alt="" className='carticon-product-icon'/>
+                <p></p>
+                <p></p>
+                <button>className='cartitems-quantity</button>
+                <p></p>
+                <img src={remove_icon} onClick={()=>{removeFromCart()}} alt="" />
+            </div>
+            <hr />
+        </div>
